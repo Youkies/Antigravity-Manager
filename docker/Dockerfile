@@ -11,6 +11,9 @@ RUN if [ "$USE_MIRROR" = "true" ] || ( [ "$USE_MIRROR" = "auto" ] && ! timeout 3
         echo "Using default npm registry..."; \
     fi
 
+# Copy package.json for dependency installation
+# Note: package-lock.json is excluded via .dockerignore to avoid registry-specific URLs
+# This ensures fresh dependency resolution from the configured registry (default or mirror)
 COPY package*.json ./
 RUN npm install
 COPY . .

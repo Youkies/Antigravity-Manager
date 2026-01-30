@@ -11,3 +11,6 @@ src-tauri/bin/
 .vscode/
 .idea/
 .DS_Store
+# Exclude package-lock.json to avoid registry-specific URLs causing build failures
+# This allows npm install to resolve dependencies fresh from the configured registry
+package-lock.json
